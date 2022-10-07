@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="calendar.css">
+</head>
+<body>
+
+    <!-- Clock -->
+
+    <div class="page1">
+        <div class="analogDigital">
+            <div class="clockBody">
+                <svg height="300px" width="300px" class="border">
+                    <circle cx="150" cy="150" r="140" stroke-width="1.5px" fill="none"/>
+                </svg>
+                <div class="pivot"></div>
+                <div class="hands second"></div>
+                <div class="hands minute"></div>
+                <div class="hands hour"></div>
+            </div>
+
+            
+            <div class="textContainer">
+                
+                <div class="hours">
+                    <h1 class="text hr hour1 focus"></h1>
+                    <h1 class="text hr hour2 down"></h1>
+                    <h1 class="text hr hour3 up"></h1>
+                </div>
+                <h1 class="colon"> : </h1>
+                <div class="minutes">
+                    <h1 class="text min min1 focus"></h1>
+                    <h1 class="text min min2 down"></h1>
+                    <h1 class="text min min3 up"></h1>
+                </div>
+                <h1 class="colon"> : </h1>
+                <div class="seconds">
+                    <h1 class="text sec sec1 focus"></h1>
+                    <h1 class="text sec sec2 down"></h1>
+                    <h1 class="text sec sec3 up"></h1>
+                </div>
+            </div>
+        </div>
+        <div class="instruction1">
+            <i class="fa-solid fa-angles-right"></i>
+        </div>
+    </div>
+
+    <!-- Calendar -->
+
+    <div class="page2">
+
+        <div class="instruction2">
+            <i class="fa-solid fa-angles-left"></i>
+        </div>
+
+        <div class="container">
+            <div class="subContainer">
+                <i class="fa-solid fa-angle-left icon" onclick="prev()"></i>
+                <div class="month">
+                    <h1 class="year"></h1>
+                    <h2 class="monthName"></h2>
+                </div>
+                <i class="fa-solid fa-angle-right icon" onclick="next()"></i>
+            </div>
+            <div class="dateContainer">
+                <div class="weekDays">
+                    <div class="day day1">Sun</div>
+                    <div class="day day2">Mon</div>
+                    <div class="day day3">Tue</div>
+                    <div class="day day4">Wed</div>
+                    <div class="day day5">Thu</div>
+                    <div class="day day6">Fri</div>
+                    <div class="day day7">Sat</div>
+                </div>
+                <div class="dates">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

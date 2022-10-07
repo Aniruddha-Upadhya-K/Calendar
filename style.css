@@ -1,0 +1,361 @@
+:root {
+    --dateWidth : 75px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    user-select: none;
+    text-align: center;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    height: 100vh;
+    background-color: rgb(39, 39, 39);
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(2, 100%);
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+    position: relative;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.page1 {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    scroll-snap-align: start;
+}
+
+.analogDigital {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Anolog Clock*/
+
+.clockBody {
+    width: 280px;
+    height: 280px;
+    outline: 4px solid white;
+    outline-offset: 10px;
+    position: relative;
+    border-radius: 50%;
+}
+
+svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pivot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.hands {
+    height: 6px;
+    width: 50%;
+    position: absolute;
+    top: calc(50% - 3px);
+    background-color: aquamarine;
+    transform-origin: 100% center;
+    transition: all 0.075s;
+    transition-timing-function: cubic-bezier(0, 2.04, 0.33, 1);
+    transition-timing-function: cubic-bezier(0, 2.71, 1, 0.13);
+    border-radius: 20px;
+}
+
+.hour {
+    width: 25%;
+    background-color: aqua;
+    left: 25%;
+    transition: all linear 0.075s;
+}
+
+.second {
+    height: 2px;
+    top: calc(50% - 1px);
+    background-color: rgb(201, 255, 255);
+}
+
+.minute {
+    height: 4px;
+    top: calc(50% - 2px);
+}
+
+/* Digital Clock */
+
+.textContainer {
+    margin-top: 50px;
+    height: 48px;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hours, .minutes, .seconds {
+    position: relative;
+    width: 48px;
+}
+.text {
+    color: aqua;
+    height: 48px;
+    transition: all .25s ease;
+    position: absolute;
+    display: flex;
+    width: 48px;
+    justify-content: center;
+    align-items: center;
+    top: calc(50% - 24px);
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+}
+.colon {
+    margin: 0px 5px;
+    color: aqua;
+}
+.noTransition {
+    transition: none;
+}
+.down {
+    transform: translateY(100%);
+}
+.focus {
+    transform: translateY(0%);
+}
+.up {
+    transform: translateY(-100%);
+}
+
+/* Calendar */
+
+.page2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 583px;
+    background-color: black;
+    border-radius: 25px 25px 5px 5px;
+    overflow: hidden;
+}
+.subContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(0, 102, 102);
+    margin: 0 0 2px 0;
+    padding: 24px 0;
+}
+.month {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4px 0;
+}
+.year {
+    font-size: 48px;
+}
+.monthName {
+    font-size: 28px;
+    text-transform: uppercase;
+}
+.icon {
+    font-size: 28px;
+    margin: 0 4px;
+    height: 75px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.dateContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.weekDays {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.dates {
+    display: flex;
+    justify-content: flex-start;
+    width: calc((var(--dateWidth) * 7) + 28px);
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 0 4px 0;
+}
+.day {
+    width: var(--dateWidth);
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0.30);
+    margin: 2px;
+}
+.prevDates, .nextDates, .currentDates {
+    width: var(--dateWidth);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    margin: 2px;
+}
+.prevDates, .nextDates {
+    opacity: 0.5;
+}
+.today {
+    background-color: rgba(0, 255, 255, 0.6);
+}
+.dates div:hover:not(.today) {
+    background-color: rgb(0, 102, 102);
+    cursor: pointer;
+}
+
+.instruction1 {
+    position: absolute;
+    bottom: 50%;
+    left: 95%;
+    transform: translate(-50%, 50%);
+    opacity: 0;
+    font-size: 28px;
+}
+
+.instruction2 {
+    position: absolute;
+    font-size: 28px;
+    bottom: 50%;
+    left: 105%;
+    transform: translate(-50%, 50%);
+    opacity: 0;
+}
+
+.animation {
+    animation: animation 2s ease forwards 1s;
+}
+
+@keyframes animation {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 200%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 50%);
+    }
+}
+
+@media screen and (max-width : 768px) {
+    :root {
+        --dateWidth : calc((80vw - 14px) / 7);
+    }
+    .container {
+        width: 80vw;
+        min-width: 318px;
+    }
+    .subContainer {
+        padding: 10px 0;
+    }
+    .year {
+        font-size: 24px;
+    }
+    .monthName {
+        font-size: 18px;
+    }
+    .icon {
+        font-size: 18px;
+        width: 30px;
+        height: 40px;
+    }
+    .dates {
+        margin: 0 0 2px 0;
+        width: calc((var(--dateWidth) * 7) + 14px);
+        font-size: 10px;
+    }
+    .day {
+        margin: 1px;
+        font-size: 12px;
+        height: 50px;
+    }
+    .prevDates, .nextDates, .currentDates {
+        margin: 1px;
+        height: 40px;
+    }
+    .instruction1 {
+        font-size: 18px;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+    }
+    .instruction2 {
+        font-size: 18px;
+        left: 150%;
+        bottom: 20px;
+        transform: translateX(-50%);
+    }
+
+    @keyframes animation {
+        from {
+            opacity: 0;
+            transform: translate(-50%, 100%);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0%);
+        }
+    }
+}
+
+@media screen and (max-width: 397.5px) {
+    :root {
+        --dateWidth : 43.43px;
+    }
+}
+
